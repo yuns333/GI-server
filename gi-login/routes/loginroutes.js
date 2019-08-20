@@ -10,6 +10,7 @@ if(!err) {
     console.log("Database is connected ... nn");
 } else {
     console.log("Error connecting database ... nn");
+    console.log(err);
 }
 });
 
@@ -58,9 +59,9 @@ exports.register = function(req,res){
         })
     }
 
-    var userid= body.email;
+    var userid= body.userid;
     var password = body.password;
-    connection.query('SELECT * FROM users WHERE email = ?',[userid], function (error, results, fields) {
+    connection.query('SELECT * FROM users WHERE userid = ?',[userid], function (error, results, fields) {
     if (error) {
       // console.log("error ocurred",error);
       res.send({
@@ -79,14 +80,14 @@ exports.register = function(req,res){
         else{
           res.send({
             "code":204,
-            "message":"Email and password does not match"
+            "message":"userid and password does not match"
               });
         }
       }
       else{
         res.send({
           "code":204,
-          "message":"Email does not exits"
+          "message":"userid does not exits"
             });
       }
     }
