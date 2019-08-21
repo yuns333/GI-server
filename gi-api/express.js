@@ -1,6 +1,6 @@
 'use strict'
 
-const { Client } = require('elasticsearch')
+const { Client } = require('@elastic/elasticsearch')
 const client = new Client({ node: 'http://165.22.111.152:9200' })
 const express = require('express');
 const cors = require('cors')
